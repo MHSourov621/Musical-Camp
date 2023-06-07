@@ -7,9 +7,9 @@ const Footer = () => {
             <footer className="footer p-10 bg-slate-700 text-white ">
                 <div>
                     <span className="footer-title">Services</span>
-                    <a className="link link-hover"><Link>Home</Link></a>
-                    <a className="link link-hover"><Link>Instructors</Link></a>
-                    <a className="link link-hover"><Link>Classes</Link></a>
+                    <p className="link link-hover"><Link>Home</Link></p>
+                    <p className="link link-hover"><Link>Instructors</Link></p>
+                    <p className="link link-hover"><Link>Classes</Link></p>
                 </div>
                 <div>
                     <span className="footer-title">Company</span>
@@ -39,7 +39,7 @@ const Footer = () => {
             <footer className="footer p-10 text-neutral-content bg-slate-700">
                 <div>
                     <p className="text-4xl font-bold">Musical <span className="text-blue-600">Camp</span></p>
-                    <p>MHS Industries Ltd.<br /> <br /><p>Copyright © 2023 - All right reserved</p></p>
+                    <p>MHS Industries Ltd.<br /> <br />Copyright © 2023 - All right reserved</p>
                 </div>
                 <div>
                     <span className="footer-title">Social</span>

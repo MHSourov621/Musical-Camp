@@ -9,7 +9,7 @@ import img4 from '../../../assets/banner/banner4.jpg'
 
 const Slider = () => {
     return (
-        <div>
+        <div className="mb-28">
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -24,28 +24,28 @@ const Slider = () => {
                 modules={[Autoplay, Pagination, Navigation]}
                 className="mySwiper"
             >
-                <SwiperSlide><img className="w-full h-[800px] rounded-xl" src={img1} alt="" />
+                <SwiperSlide><img className="w-full md:h-[800px] rounded-xl" src={img1} alt="" />
                     <div className="absolute h-full rounded-xl flex items-center left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
                         <div className="text-gray-200 space-y-7 md:w-2/3 pl-20">
                             <h2 className="md:text-6xl md:font-bold">You can try any kinds of musical instruments here.</h2>
                         </div>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide><img className="w-full h-[800px] rounded-xl" src={img2} alt="" />
+                <SwiperSlide><img className="w-full md:h-[800px] rounded-xl" src={img2} alt="" />
                     <div className="absolute h-full rounded-xl flex items-center left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
                         <div className="text-gray-200 space-y-7 md:w-2/3 pl-20">
                             <h2 className="md:text-6xl md:font-bold">You can lear Guitar from our instructors.</h2>
                         </div>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide><img className="w-full h-[800px] rounded-xl" src={img3} alt="" />
+                <SwiperSlide><img className="w-full md:h-[800px] rounded-xl" src={img3} alt="" />
                     <div className="absolute h-full rounded-xl flex items-center left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
                         <div className="text-gray-200 space-y-7 md:w-2/3 pl-20">
                             <h2 className="md:text-6xl md:font-bold">You can try drums set or learn from out instructors.</h2>
                         </div>
                     </div>
                 </SwiperSlide>
-                <SwiperSlide><img className="w-full h-[800px] rounded-xl" src={img4} alt="" />
+                <SwiperSlide><img className="w-full md:h-[800px] rounded-xl" src={img4} alt="" />
                     <div className="absolute h-full rounded-xl flex items-center left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
                         <div className="text-gray-200 space-y-7 md:w-2/3 pl-20">
                             <h2 className="md:text-6xl md:font-bold">You can try riff on guitar or learn from out instructors.</h2>
