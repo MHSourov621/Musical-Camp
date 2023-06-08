@@ -10,9 +10,9 @@ const ClassesCart = ({ item }) => {
             <div className="card-body ">
                 <h2 className="card-title mx-auto text-3xl text-blue-600 font-bold">{class_name}</h2>
                 <div className="text-lg">
-                    <p>Instructor : {instructor}</p>
-                    <p>Course Price: ${price}</p>
-                    <p>Available Seats: {available_seats}</p>
+                    <p className="font-semibold">Instructor : {instructor}</p>
+                    <p>Course Price: <span className="text-blue-700 font-bold">${price}</span></p>
+                    <p>Available Seats: <span className="text-blue-700 font-bold">{available_seats}</span></p>
                 </div>
                 <div className="card-actions flex justify-end">
                     <button className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold">Select Course</button>

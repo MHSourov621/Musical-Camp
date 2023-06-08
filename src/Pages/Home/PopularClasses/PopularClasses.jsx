@@ -17,7 +17,7 @@ const PopularClasses = () => {
             <div className="mt-14 mb-20">
                 <SectionTitle header="Popular Classes"></SectionTitle>
             </div>
-            <div className="grid grid-cols-3 gap-10 mx-24">
+            <div className="grid md:grid-cols-3 gap-10 md:mx-24">
                 {
                     classes.map(item => <ClassesCart key={item._id} item={item}></ClassesCart>)
                 }
