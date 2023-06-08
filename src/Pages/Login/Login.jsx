@@ -2,17 +2,29 @@ import { useForm } from "react-hook-form";
 import "@lottiefiles/lottie-player";
 import React, { useContext, useRef, useState } from "react";
 import { FaEyeSlash, FaEye, FaGoogle } from 'react-icons/fa';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
-    const {googleSignIn} = useContext(AuthContext);
+    const { googleSignIn, login } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const [error, setError] = useState('');
     const ref = useRef(null);
     React.useEffect(() => {
         import("@lottiefiles/lottie-player");
     });
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const onSubmit = data =>{
+        login(data.email, data.password)
+        .then(result => {
+            console.log(result.user);
+            navigate('/');
+            reset()
+        })
+        .catch(error => {
+            setError(error.message)
+        })
+    };
     const [visible, setVisible] = useState(false);
 
     const handleHide = () => {
@@ -21,15 +33,16 @@ const Login = () => {
 
     const handleGoogleLogin = () => {
         googleSignIn()
-        .then(result => {
-            console.log(result.user);
-        })
-        .catch(error => {
-            console.log(error.message);
-        })
+            .then(result => {
+                const user = result.user;
+                // console.log(user);
+            })
+            .catch(error => {
+                setError(error.message);
+            })
     }
 
-    const icon = (!visible ? <FaEyeSlash onClick={handleHide} className="text-blue-700 text-2xl my-auto ml-2 cursor-pointer" ></FaEyeSlash> : <FaEye onClick={handleHide} className="text-blue-700 text-2xl my-auto ml-2 cursor-pointer" ></FaEye>)
+    const icon = (!visible ? <FaEyeSlash onClick={handleHide} className="text-black text-2xl my-auto ml-2 cursor-pointer" ></FaEyeSlash> : <FaEye onClick={handleHide} className="text-blue-700 text-2xl my-auto ml-2 cursor-pointer" ></FaEye>)
     return (
         <div>
             <div className="hero mt-24 ">
@@ -47,6 +60,7 @@ const Login = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
+                            <p className="text-red-600 mx-auto mt-8 text-xl">{error}</p>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -74,7 +88,7 @@ const Login = () => {
                         <p className='mx-auto mb-4 text-black'>New Here? <Link className='font-semibold text-blue-700' to="/register">Create an account</Link></p>
                     </div>
                 </form>
-                
+
             </div>
         </div>
     );

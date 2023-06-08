@@ -2,11 +2,12 @@ import { useForm } from "react-hook-form";
 import "@lottiefiles/lottie-player";
 import React, { useContext, useRef, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
-    const {googleSignIn} = useContext(AuthContext);
+    const {googleSignIn, createUser, updateUser} = useContext(AuthContext);
+    const navigate = useNavigate();
     const ref = useRef(null);
     React.useEffect(() => {
         import("@lottiefiles/lottie-player");
@@ -22,15 +23,28 @@ const Register = () => {
         else{
             setError('')
         }
+        createUser(data.email, data.password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            updateUser(data.name, data.photo);
+            navigate('/')
+        })
+        .catch(error => {
+            setError(error.message)
+        })
     };
 
     const handleGoogleLogin = () => {
         googleSignIn()
         .then(result => {
-            console.log(result.user);
+            const user = result.user;
+            // console.log(user);
+            navigate('/');
+            reset()
         })
         .catch(error => {
-            console.log(error.message);
+            setError(error.message);
         })
     }
 
