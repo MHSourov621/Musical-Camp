@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import "@lottiefiles/lottie-player";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { FaEyeSlash, FaEye, FaGoogle } from 'react-icons/fa';
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Login = () => {
+    const {googleSignIn} = useContext(AuthContext);
     const ref = useRef(null);
     React.useEffect(() => {
         import("@lottiefiles/lottie-player");
@@ -16,6 +18,17 @@ const Login = () => {
     const handleHide = () => {
         setVisible(!visible);
     }
+
+    const handleGoogleLogin = () => {
+        googleSignIn()
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+    }
+
     const icon = (!visible ? <FaEyeSlash onClick={handleHide} className="text-blue-700 text-2xl my-auto ml-2 cursor-pointer" ></FaEyeSlash> : <FaEye onClick={handleHide} className="text-blue-700 text-2xl my-auto ml-2 cursor-pointer" ></FaEye>)
     return (
         <div>
@@ -55,7 +68,7 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <input type="submit" value="Login" className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold" />
                                 <div className="divider text-black">OR</div>
-                                <div className=" btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold"><FaGoogle></FaGoogle> Google Login</div>
+                                <div onClick={handleGoogleLogin} className=" btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold"><FaGoogle></FaGoogle> Google Login</div>
                             </div>
                         </div>
                         <p className='mx-auto mb-4 text-black'>New Here? <Link className='font-semibold text-blue-700' to="/register">Create an account</Link></p>
