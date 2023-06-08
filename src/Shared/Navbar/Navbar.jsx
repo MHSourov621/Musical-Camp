@@ -6,9 +6,9 @@ import { AuthContext } from "../../Provider/AuthProvider";
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const li = <>
-        <li className="mr-10 hover:text-blue-400"><Link>Home</Link></li>
+        <li className="mr-10 hover:text-blue-400"><Link to="/">Home</Link></li>
         <li className="mr-10 hover:text-blue-400"><Link>Instructors</Link></li>
-        <li className="mr-10 hover:text-blue-400"><Link>Classes</Link></li>
+        <li className="mr-10 hover:text-blue-400"><Link to="/classes">Classes</Link></li>
         {
             user && <li className="mr-10 hover:text-blue-400"><Link>Dashboard </Link></li>
         }

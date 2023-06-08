@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
-    const {googleSignIn, createUser, updateUser} = useContext(AuthContext);
+    const { googleSignIn, createUser, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();
     const ref = useRef(null);
     React.useEffect(() => {
@@ -16,36 +16,59 @@ const Register = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const onSubmit = data => {
         console.log(data)
-        if(data.password !== data.confirmPass){
+        if (data.password !== data.confirmPass) {
             setError('confirm password is not match');
             return
         }
-        else{
+        else {
             setError('')
         }
         createUser(data.email, data.password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            updateUser(data.name, data.photo);
-            navigate('/')
-        })
-        .catch(error => {
-            setError(error.message)
-        })
+            .then(() => {
+                updateUser(data.name, data.photo);
+
+                const saveUser = { name: data.name, email: data.email };
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        navigate('/')
+                    })
+
+            })
+            .catch(error => {
+                setError(error.message)
+            })
     };
 
     const handleGoogleLogin = () => {
         googleSignIn()
-        .then(result => {
-            const user = result.user;
-            // console.log(user);
-            navigate('/');
-            reset()
-        })
-        .catch(error => {
-            setError(error.message);
-        })
+            .then(result => {
+                const user = result.user;
+                const saveUser = { name: user.displayName, email: user.email };
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(saveUser)
+                })
+                    .then(res => res.json())
+                    .then(() => {
+                        navigate('/');
+                        reset()
+                    })
+            })
+            .catch(error => {
+                setError(error.message);
+            })
     }
 
     return (
