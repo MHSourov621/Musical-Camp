@@ -1,10 +1,12 @@
 import { useForm } from "react-hook-form";
 import "@lottiefiles/lottie-player";
-import React, { useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const Register = () => {
+    const {googleSignIn} = useContext(AuthContext);
     const ref = useRef(null);
     React.useEffect(() => {
         import("@lottiefiles/lottie-player");
@@ -21,6 +23,17 @@ const Register = () => {
             setError('')
         }
     };
+
+    const handleGoogleLogin = () => {
+        googleSignIn()
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+    }
+
     return (
         <div>
             <div className="hero m-24">
@@ -85,7 +98,7 @@ const Register = () => {
                             <div className="form-control mt-6">
                                 <input type="submit" value="Login" className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold" />
                                 <div className="divider text-black">OR</div>
-                                <div className=" btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold"><FaGoogle></FaGoogle> Google Login</div>
+                                <div onClick={handleGoogleLogin} className=" btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold"><FaGoogle></FaGoogle> Google Login</div>
                             </div>
                             <p className='mx-auto mb-4 text-black'>Already have an account?<Link className='font-semibold text-blue-700' to="/login">Go to Login Page</Link></p>
                         </form>
