@@ -1,7 +1,8 @@
 import { useForm } from "react-hook-form";
 import "@lottiefiles/lottie-player";
 import React, { useRef, useState } from "react";
-import { FaEyeSlash, FaEye } from 'react-icons/fa';
+import { FaEyeSlash, FaEye, FaGoogle } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 const Login = () => {
     const ref = useRef(null);
@@ -45,7 +46,7 @@ const Login = () => {
                                     <span className="label-text">Password</span>
                                 </label>
                                 <div className="flex">
-                                    <input type={visible? 'text' : "password"} {...register("password", { required: true })} name="password" placeholder="password" className="input input-bordered w-full text-black" />{icon}
+                                    <input type={visible ? 'text' : "password"} {...register("password", { required: true })} name="password" placeholder="password" className="input input-bordered w-full text-black" />{icon}
                                 </div>
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
@@ -53,10 +54,14 @@ const Login = () => {
                             </div>
                             <div className="form-control mt-6">
                                 <input type="submit" value="Login" className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold" />
+                                <div className="divider text-black">OR</div>
+                                <div className=" btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold"><FaGoogle></FaGoogle> Google Login</div>
                             </div>
                         </div>
+                        <p className='mx-auto mb-4 text-black'>New Here? <Link className='font-semibold text-blue-700' to="/register">Create an account</Link></p>
                     </div>
                 </form>
+                
             </div>
         </div>
     );
