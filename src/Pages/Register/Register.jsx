@@ -2,12 +2,15 @@ import { useForm } from "react-hook-form";
 import "@lottiefiles/lottie-player";
 import React, { useContext, useRef, useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
     const { googleSignIn, createUser, updateUser } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/'
     const ref = useRef(null);
     React.useEffect(() => {
         import("@lottiefiles/lottie-player");
@@ -39,7 +42,16 @@ const Register = () => {
                     .then(res => res.json())
                     .then(data => {
 
-                        navigate('/')
+                    })
+                    navigate(from, { replace: true })
+                    Swal.fire({
+                        title: 'User register Successful',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
                     })
 
             })
@@ -62,8 +74,17 @@ const Register = () => {
                 })
                     .then(res => res.json())
                     .then(() => {
-                        navigate('/');
-                        reset()
+                    })
+                    navigate(from, { replace: true });
+                    reset()
+                    Swal.fire({
+                        title: 'User Login Successful',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
                     })
             })
             .catch(error => {

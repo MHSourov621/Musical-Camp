@@ -2,12 +2,15 @@ import { useForm } from "react-hook-form";
 import "@lottiefiles/lottie-player";
 import React, { useContext, useRef, useState } from "react";
 import { FaEyeSlash, FaEye, FaGoogle } from 'react-icons/fa';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
     const { googleSignIn, login } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location?.state?.from?.pathname || '/'
     const [error, setError] = useState('');
     const ref = useRef(null);
     React.useEffect(() => {
@@ -18,7 +21,16 @@ const Login = () => {
         login(data.email, data.password)
         .then(result => {
             console.log(result.user);
-            navigate('/');
+            Swal.fire({
+                title: 'User Login Successful',
+                showClass: {
+                    popup: 'animate__animated animate__fadeInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__fadeOutUp'
+                }
+            })
+            navigate(from, { replace: true });
             reset()
         })
         .catch(error => {
@@ -45,12 +57,23 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(() => {
-                        navigate('/');
+                        
                     })
+                    Swal.fire({
+                        title: 'User Login Successful',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    })
+                    navigate(from, { replace: true });
             })
             .catch(error => {
                 setError(error.message);
             })
+            
     }
 
     const icon = (!visible ? <FaEyeSlash onClick={handleHide} className="text-black text-2xl my-auto ml-2 cursor-pointer" ></FaEyeSlash> : <FaEye onClick={handleHide} className="text-blue-700 text-2xl my-auto ml-2 cursor-pointer" ></FaEye>)
