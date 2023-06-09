@@ -6,7 +6,7 @@ import SectionTitle from '../../../component/SectionTitle/SectionTitle';
 
 const Instrument = () => {
     return (
-        <>
+        <div className='mb-28'>
             <div className="mt-32 mb-20">
                 <SectionTitle header="Popular Guitar"></SectionTitle>
             </div>
@@ -20,7 +20,7 @@ const Instrument = () => {
                     <div className='text-end mr-4 mb-4'>
                         <button className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold">Bye Now</button>
                     </div>
-                    <figure><img src={guitar1} alt="Shoes" /></figure>
+                    <figure><img className='hover:scale-125' src={guitar1} alt="Shoes" /></figure>
                 </div>
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
@@ -31,7 +31,7 @@ const Instrument = () => {
                     <div className='text-end mr-4 mb-4'>
                         <button className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold">Bye Now</button>
                     </div>
-                    <figure><img src={guitar2} alt="Shoes" /></figure>
+                    <figure><img className='hover:scale-125' src={guitar2} alt="Shoes" /></figure>
                 </div>
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
@@ -42,7 +42,7 @@ const Instrument = () => {
                     <div className='text-end mr-4 mb-4'>
                         <button className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold">Bye Now</button>
                     </div>
-                    <figure><img src={guitar3} alt="Shoes" /></figure>
+                    <figure><img className='hover:scale-125' src={guitar3} alt="Shoes" /></figure>
                 </div>
                 <div className="card w-96 bg-base-100 shadow-xl">
                     <div className="card-body">
@@ -53,10 +53,10 @@ const Instrument = () => {
                     <div className='text-end mr-4 mb-4'>
                         <button className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold">Bye Now</button>
                     </div>
-                    <figure><img src={guitar4} alt="Shoes" /></figure>
+                    <figure><img className='hover:scale-125' src={guitar4} alt="Shoes" /></figure>
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 
