@@ -29,8 +29,7 @@ const Register = () => {
         createUser(data.email, data.password)
             .then(() => {
                 updateUser(data.name, data.photo);
-
-                const saveUser = { name: data.name, email: data.email };
+                const saveUser = { name: data.name, email: data.email, image: data.photo };
 
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
@@ -64,7 +63,8 @@ const Register = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                const saveUser = { name: user.displayName, email: user.email };
+                // console.log(user);
+                const saveUser = { name: user.displayName, email: user.email, image: user.photoURL };
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {

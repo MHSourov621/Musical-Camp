@@ -47,7 +47,7 @@ const Login = () => {
         googleSignIn()
             .then(result => {
                 const user = result.user;
-                const saveUser = { name: user.displayName, email: user.email };
+                const saveUser = { name: user.displayName, email: user.email, image: user.photoURL };
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
                     headers: {

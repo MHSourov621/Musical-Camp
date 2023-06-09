@@ -7,7 +7,7 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const li = <>
         <li className="mr-10 hover:text-blue-400"><Link to="/">Home</Link></li>
-        <li className="mr-10 hover:text-blue-400"><Link>Instructors</Link></li>
+        <li className="mr-10 hover:text-blue-400"><Link to="/instructors">Instructors</Link></li>
         <li className="mr-10 hover:text-blue-400"><Link to="/classes">Classes</Link></li>
         {
             user && <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/selectedClasses'>Dashboard </Link></li>
