@@ -12,6 +12,7 @@ const Classes = () => {
                 setClasses(data);
             })
     }, [])
+
     return (
         <div>
             <div className="mt-14 mb-20">

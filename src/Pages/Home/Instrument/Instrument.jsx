@@ -6,7 +6,7 @@ import SectionTitle from '../../../component/SectionTitle/SectionTitle';
 
 const Instrument = () => {
     return (
-        <div className='mb-28'>
+        <>
             <div className="mt-32 mb-20">
                 <SectionTitle header="Popular Guitar"></SectionTitle>
             </div>
@@ -56,7 +56,7 @@ const Instrument = () => {
                     <figure><img className='hover:scale-125' src={guitar4} alt="Shoes" /></figure>
                 </div>
             </div>
-        </div>
+        </>
     );
 };
 

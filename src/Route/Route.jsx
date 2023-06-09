@@ -49,7 +49,15 @@ export const router = createBrowserRouter([
         {
           path: 'allUsers',
           element: <AllUsers></AllUsers>
-        }
+        },
+        {
+          path: 'manageClasses',
+          element: <h2>This is manage classes</h2>
+        },
+        {
+          path: 'addClass',
+          element: <h2>This is add class</h2>
+        },
       ] 
     }
   ]);

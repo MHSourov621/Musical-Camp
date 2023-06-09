@@ -4,7 +4,7 @@ import Footer from "../Shared/Footer/Footer";
 
 
 const Dashboard = () => {
-    const isAdmin = true;
+    const isAdmin = false;
     const isInstructor = false;
     return (
         <div>
@@ -21,11 +21,11 @@ const Dashboard = () => {
                     <ul className="menu p-4 w-80 h-1/2 bg-base-200 text-base-content rounded-lg">
                         {
                             isAdmin ? <>
-                                <li className="text-lg font-semibold"><Link to="/dashboard">Manage Classes</Link></li>
+                                <li className="text-lg font-semibold"><Link to="/dashboard/manageClasses">Manage Classes</Link></li>
                                 <li className="text-lg font-semibold"><Link to='/dashboard/allUsers'>Manage Users</Link></li>
                             </> :
                                 isInstructor ? <>
-                                    <li className="text-lg font-semibold"><Link to="/dashboard">Add a Class</Link></li>
+                                    <li className="text-lg font-semibold"><Link to="/dashboard/addClass">Add a Class</Link></li>
                                     <li className="text-lg font-semibold"><Link>My Classes</Link></li>
                                 </> :
                                     <>

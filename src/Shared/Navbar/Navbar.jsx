@@ -5,17 +5,21 @@ import { AuthContext } from "../../Provider/AuthProvider";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
+    const isAdmin = false;
+    const isInstructor = false;
     const li = <>
         <li className="mr-10 hover:text-blue-400"><Link to="/">Home</Link></li>
         <li className="mr-10 hover:text-blue-400"><Link to="/instructors">Instructors</Link></li>
         <li className="mr-10 hover:text-blue-400"><Link to="/classes">Classes</Link></li>
         {
-            user && <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/selectedClasses'>Dashboard </Link></li>
+            user && (isAdmin ? <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/manageClasses'>Dashboard </Link></li> : isInstructor ?
+            <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/addClass'>Dashboard </Link></li> :
+            <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/selectedClasses'>Dashboard </Link></li>)
         }
     </>
     const handleLogout = () => {
         logOut()
-        .then(result => {console.log(result);})
+        .then(() => {})
         .catch(error => {
             console.log(error);
         })
