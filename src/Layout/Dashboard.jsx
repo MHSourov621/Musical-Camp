@@ -11,7 +11,7 @@ const Dashboard = () => {
             <Navbar></Navbar>
             <div className="drawer lg:drawer-open">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col items-center justify-center">
+                <div className="drawer-content flex flex-col ">
                     <Outlet></Outlet>
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
@@ -22,7 +22,7 @@ const Dashboard = () => {
                         {
                             isAdmin ? <>
                                 <li className="text-lg font-semibold"><Link to="/dashboard">Manage Classes</Link></li>
-                                <li className="text-lg font-semibold"><Link>Manage Users</Link></li>
+                                <li className="text-lg font-semibold"><Link to='/dashboard/allUsers'>Manage Users</Link></li>
                             </> :
                                 isInstructor ? <>
                                     <li className="text-lg font-semibold"><Link to="/dashboard">Add a Class</Link></li>

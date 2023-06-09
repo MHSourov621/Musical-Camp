@@ -6,6 +6,7 @@ import Register from "../Pages/Register/Register";
 import Classes from "../Pages/Classes/Classes";
 import Dashboard from "../Layout/Dashboard";
 import SelectedClasses from "../Pages/SelectedClasses/SelectedClasses";
+import AllUsers from "../Pages/AllUsers/AllUsers";
 
 
 export const router = createBrowserRouter([
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
         {
           path: 'selectedClasses',
           element: <SelectedClasses></SelectedClasses>
+        },
+        {
+          path: 'allUsers',
+          element: <AllUsers></AllUsers>
         }
       ] 
     }
