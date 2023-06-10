@@ -2,11 +2,12 @@ import { Link, Outlet } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import Footer from "../Shared/Footer/Footer";
 import useAdmin from "../hooks/useAdmin";
+import useInstructor from "../hooks/useInstructor";
 
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
-    const isInstructor = false;
+    const [isInstructor] = useInstructor();
     return (
         <div>
             <Navbar></Navbar>

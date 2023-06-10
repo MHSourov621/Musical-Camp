@@ -62,7 +62,7 @@ const SelectedClasses = () => {
                             <td>{course.class_name}</td>
                             <td>{course.instructor}</td>
                             <td>{course.available_seats}</td>
-                            <td>{course.price}</td>
+                            <td>$ {course.price}</td>
                             <td><button className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold">Payment</button></td>
                             <td><button onClick={() => handleDelete(course._id)} className="btn btn-ghost bg-red-600 hover:bg-red-600 text-white"><FaTrashAlt></FaTrashAlt></button></td>
                         </tr>)

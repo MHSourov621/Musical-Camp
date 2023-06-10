@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isAdmin] = useAdmin();
-    console.log(isAdmin);
-    const isInstructor = false;
+    // console.log(isAdmin);
+    const [isInstructor] = useInstructor();
     const li = <>
         <li className="mr-10 hover:text-blue-400"><Link to="/">Home</Link></li>
         <li className="mr-10 hover:text-blue-400"><Link to="/instructors">Instructors</Link></li>
@@ -16,7 +17,7 @@ const Navbar = () => {
         {
             user && (isAdmin ? <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/manageClasses'>Dashboard </Link></li> : isInstructor ?
             <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/addClass'>Dashboard </Link></li> :
-            <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/selectedClasses'>Dashboard </Link></li>)
+            <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/selectedClasses'>Dashboard </Link></li> )
         }
     </>
     const handleLogout = () => {
