@@ -10,6 +10,7 @@ import AllUsers from "../Pages/AllUsers/AllUsers";
 import PrivateRoute from "./PrivateRoute";
 import Instructors from "../Pages/Instructors/Instructors";
 import Payment from "../Pages/Payment/Payment";
+import EnrollClass from "../Pages/EnrollClass/EnrollClass";
 
 
 export const router = createBrowserRouter([
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
           element: <SelectedClasses></SelectedClasses>
         },
         {
+          path: 'enrollClass',
+          element: <EnrollClass></EnrollClass>
+        },
+        {
           path: 'allUsers',
           element: <AllUsers></AllUsers>
         },
@@ -64,6 +69,7 @@ export const router = createBrowserRouter([
           path: 'addClass',
           element: <h2>This is add class</h2>
         },
+        
       ] 
     }
   ]);
