@@ -1,10 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
 import Navbar from "../Shared/Navbar/Navbar";
 import Footer from "../Shared/Footer/Footer";
+import useAdmin from "../hooks/useAdmin";
 
 
 const Dashboard = () => {
-    const isAdmin = false;
+    const [isAdmin] = useAdmin();
     const isInstructor = false;
     return (
         <div>

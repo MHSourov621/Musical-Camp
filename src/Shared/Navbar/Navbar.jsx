@@ -1,11 +1,13 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import useAdmin from "../../hooks/useAdmin";
 
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    const isAdmin = false;
+    const [isAdmin] = useAdmin();
+    console.log(isAdmin);
     const isInstructor = false;
     const li = <>
         <li className="mr-10 hover:text-blue-400"><Link to="/">Home</Link></li>

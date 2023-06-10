@@ -13,7 +13,7 @@ const PopularInstructor = () => {
             <div className="mt-32 mb-20">
                 <SectionTitle header="Popular Instructors"></SectionTitle>
             </div>
-            <div className="grid grid-cols-2 gap-20">
+            <div className="grid md:grid-cols-2 gap-20">
                 {
                     instructors.slice(0, 6).map(instructor => <InstructorCard key={instructor._id} instructor={instructor}></InstructorCard> )
                 }
