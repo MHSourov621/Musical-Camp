@@ -4,7 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 
-const Checkout = ({ price, id }) => {
+const Checkout = ({ price, id, seat }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useContext(AuthContext);
@@ -107,7 +107,11 @@ const Checkout = ({ price, id }) => {
                 .then(res => res.json())
                 .then(data => {
                     fetch(`http://localhost:5000/selectedpatch/${id}`, {
-                        method: 'PATCH'
+                        method: 'PATCH',
+                        // headers: {
+                        //     'content-type': 'application/json'
+                        // },
+                        // body: JSON.stringify(seat)
                     })
                         .then(res => res.json())
                     if (data.insertedId) {

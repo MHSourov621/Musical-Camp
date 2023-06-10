@@ -21,7 +21,7 @@ const Payment = () => {
                 <SectionTitle header="Payment"></SectionTitle>
             </div>
             <Elements stripe={stripePromise}>
-                <Checkout id={course._id} price={course?.price}></Checkout>
+                <Checkout seat={course.available_seats - 1} id={course._id} price={course?.price}></Checkout>
             </Elements>
         </div>
     );

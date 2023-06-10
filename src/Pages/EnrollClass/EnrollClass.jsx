@@ -15,7 +15,7 @@ const EnrollClass = () => {
             <div className="mt-14 mb-20">
                 <SectionTitle header="Enroll Classes"></SectionTitle>
             </div>
-            <div className="grid grid-cols-2 ml-24">
+            <div className="grid grid-cols-2 ml-24 gap-16">
                 {
                     enroll.map(course => <div key={course._id}>
                         <div className="card w-96 bg-base-100 shadow-xl text-black">

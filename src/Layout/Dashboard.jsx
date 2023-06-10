@@ -33,6 +33,7 @@ const Dashboard = () => {
                                     <>
                                         <li className="text-lg font-semibold"><Link to="/dashboard/selectedClasses">My Selected Classes</Link></li>
                                         <li className="text-lg font-semibold" ><Link to="/dashboard/enrollClass">My Enrolled Classes</Link></li>
+                                        <li className="text-lg font-semibold" ><Link to="/dashboard/paymentHistory">Payment History</Link></li>
                                     </>
                         }
                     </ul>
