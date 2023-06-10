@@ -9,6 +9,7 @@ import SelectedClasses from "../Pages/SelectedClasses/SelectedClasses";
 import AllUsers from "../Pages/AllUsers/AllUsers";
 import PrivateRoute from "./PrivateRoute";
 import Instructors from "../Pages/Instructors/Instructors";
+import Payment from "../Pages/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -53,6 +54,11 @@ export const router = createBrowserRouter([
         {
           path: 'manageClasses',
           element: <h2>This is manage classes</h2>
+        },
+        
+        {
+          path: 'payment/:id',
+          element: <Payment></Payment>
         },
         {
           path: 'addClass',

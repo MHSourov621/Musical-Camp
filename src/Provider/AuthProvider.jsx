@@ -46,7 +46,6 @@ const AuthProvider = ({ children }) => {
             if (loggedInUser) {
                 axios.post('http://localhost:5000/jwt', { email: loggedInUser.email })
                     .then(data => {
-                        console.log(data.data.token);
                         localStorage.setItem('access-token' ,data.data.token);
                     })
             }

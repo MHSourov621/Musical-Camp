@@ -10,22 +10,29 @@ const Navbar = () => {
     const [isAdmin] = useAdmin();
     // console.log(isAdmin);
     const [isInstructor] = useInstructor();
+    const dashboard = user && <>
+        {
+            isAdmin && <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/manageClasses'>Dashboard </Link></li>
+        }
+        {
+            isInstructor && <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/addClass'>Dashboard </Link></li>
+        }
+        {
+            !isAdmin && !isInstructor && <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/selectedClasses'>Dashboard </Link></li>
+        }
+    </>
     const li = <>
         <li className="mr-10 hover:text-blue-400"><Link to="/">Home</Link></li>
         <li className="mr-10 hover:text-blue-400"><Link to="/instructors">Instructors</Link></li>
         <li className="mr-10 hover:text-blue-400"><Link to="/classes">Classes</Link></li>
-        {
-            user && (isAdmin ? <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/manageClasses'>Dashboard </Link></li> : isInstructor ?
-            <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/addClass'>Dashboard </Link></li> :
-            <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/selectedClasses'>Dashboard </Link></li> )
-        }
+        {dashboard}
     </>
     const handleLogout = () => {
         logOut()
-        .then(() => {})
-        .catch(error => {
-            console.log(error);
-        })
+            .then(() => { })
+            .catch(error => {
+                console.log(error);
+            })
     }
     return (
         <div className="navbar py-5">

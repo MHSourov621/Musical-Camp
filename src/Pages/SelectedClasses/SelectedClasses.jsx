@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const SelectedClasses = () => {
@@ -63,7 +64,7 @@ const SelectedClasses = () => {
                             <td>{course.instructor}</td>
                             <td>{course.available_seats}</td>
                             <td>$ {course.price}</td>
-                            <td><button className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold">Payment</button></td>
+                            <td><Link to={`/dashboard/payment/${course._id}`}><button className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:bg-blue-600 text-white font-semibold">Payment</button></Link></td>
                             <td><button onClick={() => handleDelete(course._id)} className="btn btn-ghost bg-red-600 hover:bg-red-600 text-white"><FaTrashAlt></FaTrashAlt></button></td>
                         </tr>)
                     }
