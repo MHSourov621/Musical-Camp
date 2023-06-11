@@ -14,6 +14,7 @@ import EnrollClass from "../Pages/EnrollClass/EnrollClass";
 import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 import AdminRoute from "./AdminRoute";
 import AddClass from "../Pages/AddClass/AddClass";
+import MyClasses from "../Pages/MyClasses/MyClasses";
 
 
 export const router = createBrowserRouter([
@@ -75,7 +76,11 @@ export const router = createBrowserRouter([
         {
           path: 'addClass',
           element: <AddClass></AddClass>
-        }
+        },
+        {
+          path: 'myClasses',
+          element: <MyClasses></MyClasses>
+        },
       ] 
     }
   ]);
