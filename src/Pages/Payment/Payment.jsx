@@ -10,10 +10,13 @@ const Payment = () => {
     const stripePromise = loadStripe(import.meta.env.VITE_payment_getway_pk);
     // console.log(import.meta.env.VITE_payment_getway_pk);
     const { id } = useParams();
-    const { data: course = [],} = useQuery(['course'], async () => {
+    const { data: course = {}, isLoading} = useQuery(['course'], async () => {
         const res = await fetch(`http://localhost:5000/select/${id}`)
         return res.json();
     })
+    if(isLoading){
+        return <progress className="progress w-56"></progress>
+    }
     // console.log(course.price);
     return (
         <div>
@@ -21,7 +24,7 @@ const Payment = () => {
                 <SectionTitle header="Payment"></SectionTitle>
             </div>
             <Elements stripe={stripePromise}>
-                <Checkout seat={course.available_seats - 1} id={course._id} price={course?.price}></Checkout>
+                <Checkout classId={course.classId} seat={course.available_seats - 1} id={course._id} price={course?.price}></Checkout>
             </Elements>
         </div>
     );

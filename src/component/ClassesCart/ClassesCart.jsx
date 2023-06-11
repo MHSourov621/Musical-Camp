@@ -7,7 +7,7 @@ import useInstructor from "../../hooks/useInstructor";
 
 
 const ClassesCart = ({ item }) => {
-    const { class_name, image, instructor, price, available_seats } = item;
+    const { _id, class_name, image, instructor, price, available_seats } = item;
     const { user } = useContext(AuthContext);
     const [isAdmin] = useAdmin();
     const [isInstructor] = useInstructor();
@@ -22,6 +22,7 @@ const ClassesCart = ({ item }) => {
             return
         }
         const course = {
+            classId : _id,
             email: user.email,
             class_name: class_name,
             image: image,
@@ -45,7 +46,7 @@ const ClassesCart = ({ item }) => {
         })
     }
     return (
-        <div className="card w-96 bg-base-100 shadow-xl text-black">
+        <div className={`card w-96  shadow-xl text-black ${available_seats == 0 ? 'bg-red-500': 'bg-base-100'}`}>
             <figure className="px-10 pt-10">
                 <img src={image} alt="Shoes" className="rounded-xl border-2" />
             </figure>
@@ -57,7 +58,7 @@ const ClassesCart = ({ item }) => {
                     <p>Available Seats: <span className="text-blue-700 font-bold">{available_seats}</span></p>
                 </div>
                 <div className="card-actions flex justify-end">
-                    <button disabled={isAdmin || isInstructor} onClick={ handleSelectedCourse} className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:scale-125 hover:bg-blue-600 text-white font-semibold">Select Course</button>
+                    <button disabled={isAdmin || isInstructor || available_seats == 0} onClick={ handleSelectedCourse} className="btn bg-blue-700 border-blue-500 border-2 border-r-0 border-t-0 hover:scale-125 hover:bg-blue-600 text-white font-semibold">Select Course</button>
                 </div>
             </div>
         </div>

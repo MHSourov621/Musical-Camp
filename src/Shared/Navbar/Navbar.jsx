@@ -7,9 +7,11 @@ import useInstructor from "../../hooks/useInstructor";
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    const [isAdmin] = useAdmin();
-    // console.log(isAdmin);
-    const [isInstructor] = useInstructor();
+    const [isAdmin, isAdminLoading] = useAdmin();
+    const [isInstructor, isInstructorLoading] = useInstructor();
+    if(isInstructorLoading || isAdminLoading){
+        <p>Loading</p>
+    }
     const dashboard = user && <>
         {
             isAdmin && <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/manageClasses'>Dashboard </Link></li>
@@ -26,6 +28,7 @@ const Navbar = () => {
         <li className="mr-10 hover:text-blue-400"><Link to="/instructors">Instructors</Link></li>
         <li className="mr-10 hover:text-blue-400"><Link to="/classes">Classes</Link></li>
         {dashboard}
+        
     </>
     const handleLogout = () => {
         logOut()

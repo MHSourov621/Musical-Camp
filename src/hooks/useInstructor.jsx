@@ -7,7 +7,9 @@ const useInstructor = () => {
     const token = localStorage.getItem('access-token')
 
     const [isInstructor, setIsInstructor] = useState(false);
+    const [isInstructorLoading, setIsInstructorLoading] = useState(false);
     useEffect(() => {
+        setIsInstructorLoading(true)
         fetch(`http://localhost:5000/instructor/${user?.email}`,{
             headers: {
                 'authorization': `bearer ${token}`
@@ -16,10 +18,11 @@ const useInstructor = () => {
         .then(res => res.json())
         .then(data => {
             setIsInstructor(data.instructor);
+            setIsInstructorLoading(false);
         })
     },[user, token])
 
-    return[isInstructor]
+    return[isInstructor, isInstructorLoading]
 };
 
 export default useInstructor;

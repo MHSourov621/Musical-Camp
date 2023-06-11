@@ -4,7 +4,7 @@ import { AuthContext } from "../../Provider/AuthProvider";
 import Swal from "sweetalert2";
 
 
-const Checkout = ({ price, id, seat }) => {
+const Checkout = ({ price, id, seat, classId }) => {
     const stripe = useStripe();
     const elements = useElements();
     const { user } = useContext(AuthContext);
@@ -13,16 +13,6 @@ const Checkout = ({ price, id, seat }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const token = localStorage.getItem('access-token');
-
-    // useEffect(() => {
-    //     if (price > 0) {
-    //         axiosSecure.post('/create-payment-intent', { price })
-    //             .then(res => {
-    //                 console.log(res.data);
-    //                 setClientSecret(res.data.clientSecret)
-    //             })
-    //     }
-    // }, [price, axiosSecure])
 
     useEffect(() => {
         if (price > 0) {
@@ -108,10 +98,10 @@ const Checkout = ({ price, id, seat }) => {
                 .then(data => {
                     fetch(`http://localhost:5000/selectedpatch/${id}`, {
                         method: 'PATCH',
-                        // headers: {
-                        //     'content-type': 'application/json'
-                        // },
-                        // body: JSON.stringify(seat)
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({ seat })
                     })
                         .then(res => res.json())
                     if (data.insertedId) {
@@ -122,6 +112,15 @@ const Checkout = ({ price, id, seat }) => {
                             showConfirmButton: false,
                             timer: 1500
                         })
+                        fetch(`http://localhost:5000/class/${classId}`, {
+                                method: 'PUT',
+                                headers: {
+                                    'content-type': 'application/json'
+                                },
+                                body: JSON.stringify({ seat })
+                            })
+                            .then(response => response.json())
+                            .then(data => console.log(data))
                     }
                 })
         }
