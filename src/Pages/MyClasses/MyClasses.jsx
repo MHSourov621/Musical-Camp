@@ -33,9 +33,9 @@ const MyClasses = () => {
                             <th>{index + 1}</th>
                             <td>{user.class_name}</td>
                             <td>{user.available_seats}</td>
-                            <td>{user.price}</td>
+                            <td>$ {user.price}</td>
                             <td>{user.status}</td>
-                            <td>You have no feed back now to its so long</td>
+                            <td>{user.feedback}</td>
                             
                         </tr>)
                     }

@@ -3,6 +3,7 @@ import Navbar from "../Shared/Navbar/Navbar";
 import Footer from "../Shared/Footer/Footer";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import { FaCcStripe, FaClipboardList, FaHome, FaUserShield, FaUsers } from 'react-icons/fa';
 
 
 const Dashboard = () => {
@@ -23,24 +24,24 @@ const Dashboard = () => {
                     <ul className="menu p-4 w-80 h-1/2 bg-base-200 text-base-content rounded-lg">
                         {
                             isAdmin ? <>
-                                <li className="text-lg font-semibold"><Link to="/dashboard/manageClasses">Manage Classes</Link></li>
-                                <li className="text-lg font-semibold"><Link to='/dashboard/allUsers'>Manage Users</Link></li>
+                                <li className="text-lg font-semibold"><Link to="/dashboard/manageClasses"><FaUserShield></FaUserShield>Manage Classes</Link></li>
+                                <li className="text-lg font-semibold"><Link to='/dashboard/allUsers'><FaUsers></FaUsers>Manage Users</Link></li>
                             </> :
                                 isInstructor ? <>
-                                    <li className="text-lg font-semibold"><Link to="/dashboard/addClass">Add a Class</Link></li>
-                                    <li className="text-lg font-semibold"><Link to="/dashboard/myClasses">My Classes</Link></li>
+                                    <li className="text-lg font-semibold"><Link to="/dashboard/addClass"><FaHome></FaHome>Add a Class</Link></li>
+                                    <li className="text-lg font-semibold"><Link to="/dashboard/myClasses"><FaClipboardList></FaClipboardList>My Classes</Link></li>
                                 </> :
                                     <>
-                                        <li className="text-lg font-semibold"><Link to="/dashboard/selectedClasses">My Selected Classes</Link></li>
-                                        <li className="text-lg font-semibold" ><Link to="/dashboard/enrollClass">My Enrolled Classes</Link></li>
-                                        <li className="text-lg font-semibold" ><Link to="/dashboard/paymentHistory">Payment History</Link></li>
+                                        <li className="text-lg font-semibold"><Link to="/dashboard/selectedClasses"><FaHome></FaHome>My Selected Classes</Link></li>
+                                        <li className="text-lg font-semibold" ><Link to="/dashboard/enrollClass"><FaClipboardList></FaClipboardList>My Enrolled Classes</Link></li>
+                                        <li className="text-lg font-semibold" ><Link to="/dashboard/paymentHistory"><FaCcStripe></FaCcStripe>Payment History</Link></li>
                                     </>
                         }
                     </ul>
 
                 </div>
             </div>
-            {/* <Footer></Footer> */}
+            <Footer></Footer>
         </div>
     );
 };

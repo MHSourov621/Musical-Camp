@@ -8,9 +8,7 @@ const AdminRoute = ({children}) => {
     const { user, loading } = useContext(AuthContext);
     const [isAdmin, isAdminLoading] = useAdmin();
     const location = useLocation();
-    console.log(isAdmin);
-    console.log(user);
-    console.log(isAdminLoading);
+    // console.log('user', !!user, '| isAdmin', isAdmin, '|loading', loading, '|isAdminLoading', isAdminLoading);
 
     if (loading || isAdminLoading) {
         return <progress className="progress w-56"></progress>
@@ -19,7 +17,10 @@ const AdminRoute = ({children}) => {
     if (user && isAdmin) {
         return children;
     }
-    return <Navigate to="/" state={{ from: location }} replace></Navigate>
+    if(!loading  && !isAdminLoading){
+
+        return <Navigate to="/" state={{ from: location }} replace></Navigate>
+    }
     // return children
 };
 

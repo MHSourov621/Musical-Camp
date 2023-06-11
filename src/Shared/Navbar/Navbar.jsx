@@ -10,7 +10,7 @@ const Navbar = () => {
     const [isAdmin, isAdminLoading] = useAdmin();
     const [isInstructor, isInstructorLoading] = useInstructor();
     if(isInstructorLoading || isAdminLoading){
-        <p>Loading</p>
+        return <p>Loading</p>
     }
     const dashboard = user && <>
         {

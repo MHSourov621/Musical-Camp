@@ -15,12 +15,15 @@ import PaymentHistory from "../Pages/PaymentHistory/PaymentHistory";
 import AdminRoute from "./AdminRoute";
 import AddClass from "../Pages/AddClass/AddClass";
 import MyClasses from "../Pages/MyClasses/MyClasses";
+import ManageClass from "../Pages/ManageClass/ManageClass";
+import Error from "../Pages/Error/Error";
 
 
 export const router = createBrowserRouter([
     {
       path: "/",
       element: <Main></Main>,
+      errorElement: <Error></Error>,
       children: [
         {
           path: '/',
@@ -62,7 +65,7 @@ export const router = createBrowserRouter([
         },
         {
           path: 'manageClasses',
-          element: <h2>This is manage classes</h2>
+          element: <ManageClass></ManageClass>
         },
         
         {

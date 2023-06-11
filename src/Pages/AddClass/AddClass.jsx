@@ -1,9 +1,8 @@
 import SectionTitle from "../../component/SectionTitle/SectionTitle";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { json } from "react-router-dom";
 
 const img_hosting_token = import.meta.env.VITE_image_upload;
 const AddClass = () => {

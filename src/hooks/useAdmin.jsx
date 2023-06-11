@@ -7,9 +7,9 @@ const useAdmin = () => {
     const token = localStorage.getItem('access-token')
 
     const [isAdmin, setIsAdmin] = useState(false);
-    const [isAdminLoading, setIsAdminLoading] = useState(false);
+    const [isAdminLoading, setIsAdminLoading] = useState(true);
     useEffect(() => {
-        setIsAdminLoading(true)
+        
         fetch(`http://localhost:5000/admin/${user?.email}`,{
             headers: {
                 'authorization': `bearer ${token}`
