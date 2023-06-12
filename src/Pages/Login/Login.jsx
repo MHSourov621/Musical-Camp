@@ -48,7 +48,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 const saveUser = { name: user.displayName, email: user.email, image: user.photoURL };
-                fetch('http://localhost:5000/users', {
+                fetch('https://musical-camp-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"

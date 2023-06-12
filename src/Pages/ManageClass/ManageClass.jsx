@@ -5,11 +5,11 @@ import Swal from "sweetalert2";
 
 const ManageClass = () => {
     const { data: allClass = [], refetch } = useQuery(['allClass'], async () => {
-        const res = await fetch(`http://localhost:5000/classesmanage`)
+        const res = await fetch(`https://musical-camp-server.vercel.app/classesmanage`)
         return res.json();
     })
     const handleApprove = (id) => {
-        fetch(`http://localhost:5000/classesapprove/${id}`, {
+        fetch(`https://musical-camp-server.vercel.app/classesapprove/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())
@@ -28,7 +28,7 @@ const ManageClass = () => {
     }
 
     const handleDeny = (id) => {
-        fetch(`http://localhost:5000/classesdeny/${id}`, {
+        fetch(`https://musical-camp-server.vercel.app/classesdeny/${id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

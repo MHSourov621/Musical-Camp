@@ -9,9 +9,9 @@ const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isAdmin, isAdminLoading] = useAdmin();
     const [isInstructor, isInstructorLoading] = useInstructor();
-    if(isInstructorLoading || isAdminLoading){
-        return <p>Loading</p>
-    }
+    // if(isInstructorLoading || isAdminLoading){
+    //     return <p>Loading</p>
+    // }
     const dashboard = user && <>
         {
             isAdmin && <li className="mr-10 hover:text-blue-400"><Link to='/dashboard/manageClasses'>Dashboard </Link></li>

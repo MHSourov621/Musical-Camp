@@ -10,7 +10,7 @@ const useAdmin = () => {
     const [isAdminLoading, setIsAdminLoading] = useState(true);
     useEffect(() => {
         
-        fetch(`http://localhost:5000/admin/${user?.email}`,{
+        fetch(`https://musical-camp-server.vercel.app/admin/${user?.email}`,{
             headers: {
                 'authorization': `bearer ${token}`
             }

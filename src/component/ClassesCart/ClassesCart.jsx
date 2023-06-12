@@ -31,7 +31,7 @@ const ClassesCart = ({ item }) => {
             available_seats: available_seats,
             payment: 'pending'
         }
-        axios.post('http://localhost:5000/selected', course)
+        axios.post('https://musical-camp-server.vercel.app/selected', course)
         .then(data => {
             console.log(data.data);
             if(data.data.insertedId){

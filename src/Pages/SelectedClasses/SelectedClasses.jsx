@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 const SelectedClasses = () => {
     const { user } = useContext(AuthContext);
     const { data: courses = [], refetch } = useQuery(['courses'], async () => {
-        const res = await fetch(`http://localhost:5000/selected/${user.email}`)
+        const res = await fetch(`https://musical-camp-server.vercel.app/selected/${user.email}`)
         return res.json()
     })
 
@@ -24,7 +24,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/selected/${id}`, {
+                fetch(`https://musical-camp-server.vercel.app/selected/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

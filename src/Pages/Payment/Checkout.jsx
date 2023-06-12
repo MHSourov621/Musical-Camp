@@ -16,7 +16,7 @@ const Checkout = ({ price, id, seat, classId }) => {
 
     useEffect(() => {
         if (price > 0) {
-            fetch('http://localhost:5000/create-payment-intent', {
+            fetch('https://musical-camp-server.vercel.app/create-payment-intent', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -86,7 +86,7 @@ const Checkout = ({ price, id, seat, classId }) => {
                 data: new Date(),
                 status: 'service pending'
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://musical-camp-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -96,7 +96,7 @@ const Checkout = ({ price, id, seat, classId }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    fetch(`http://localhost:5000/selectedpatch/${id}`, {
+                    fetch(`https://musical-camp-server.vercel.app/selectedpatch/${id}`, {
                         method: 'PATCH',
                         headers: {
                             'content-type': 'application/json'
@@ -112,7 +112,7 @@ const Checkout = ({ price, id, seat, classId }) => {
                             showConfirmButton: false,
                             timer: 1500
                         })
-                        fetch(`http://localhost:5000/class/${classId}`, {
+                        fetch(`https://musical-camp-server.vercel.app/class/${classId}`, {
                                 method: 'PUT',
                                 headers: {
                                     'content-type': 'application/json'

@@ -9,7 +9,7 @@ const useInstructor = () => {
     const [isInstructor, setIsInstructor] = useState(false);
     const [isInstructorLoading, setIsInstructorLoading] = useState(true);
     useEffect(() => {
-        fetch(`http://localhost:5000/instructor/${user?.email}`,{
+        fetch(`https://musical-camp-server.vercel.app/instructor/${user?.email}`,{
             headers: {
                 'authorization': `bearer ${token}`
             }

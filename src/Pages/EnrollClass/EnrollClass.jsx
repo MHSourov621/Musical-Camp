@@ -7,7 +7,7 @@ import SectionTitle from "../../component/SectionTitle/SectionTitle";
 const EnrollClass = () => {
     const { user } = useContext(AuthContext);
     const { data: enroll = [] } = useQuery(['enroll'], async () => {
-        const res = await fetch(`http://localhost:5000/selectedEnroll/${user?.email}`)
+        const res = await fetch(`https://musical-camp-server.vercel.app/selectedEnroll/${user?.email}`)
         return res.json();
     })
     return (

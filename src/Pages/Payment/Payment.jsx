@@ -11,7 +11,7 @@ const Payment = () => {
     // console.log(import.meta.env.VITE_payment_getway_pk);
     const { id } = useParams();
     const { data: course = {}, isLoading} = useQuery(['course'], async () => {
-        const res = await fetch(`http://localhost:5000/select/${id}`)
+        const res = await fetch(`https://musical-camp-server.vercel.app/select/${id}`)
         return res.json();
     })
     if(isLoading){

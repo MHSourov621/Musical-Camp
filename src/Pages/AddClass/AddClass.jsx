@@ -25,7 +25,7 @@ const AddClass = () => {
                     const { available_seats, class_name, email, instructor, price } = data;
                     const newClass = { available_seats: parseInt(available_seats), class_name, email, instructor, price: parseFloat(price), image: photoURL, status: 'pending' }
                     // console.log(newClass);
-                    fetch('http://localhost:5000/classes',{
+                    fetch('https://musical-camp-server.vercel.app/classes',{
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json'

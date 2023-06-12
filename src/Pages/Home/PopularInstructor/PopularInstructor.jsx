@@ -5,7 +5,7 @@ import InstructorCard from "../../../component/InstructorCard/InstructorCard";
 
 const PopularInstructor = () => {
     const { data: instructors = [], } = useQuery(['users'], async () => {
-        const res = await fetch("http://localhost:5000/instructors")
+        const res = await fetch("https://musical-camp-server.vercel.app/instructors")
         return res.json();
     })
     return (

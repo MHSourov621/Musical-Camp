@@ -31,7 +31,7 @@ const Register = () => {
                 updateUser(data.name, data.photo);
                 const saveUser = { name: data.name, email: data.email, image: data.photo };
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://musical-camp-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
@@ -65,7 +65,7 @@ const Register = () => {
                 const user = result.user;
                 // console.log(user);
                 const saveUser = { name: user.displayName, email: user.email, image: user.photoURL };
-                fetch('http://localhost:5000/users', {
+                fetch('https://musical-camp-server.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         "content-type": "application/json"
